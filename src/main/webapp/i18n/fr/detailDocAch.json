@@ -1,0 +1,32 @@
+{
+  "jadeApp": {
+    "detailDocAch": {
+      "home": {
+        "title": "DetailDocAches",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Detail Doc Ach",
+        "createOrEditLabel": "Créer ou éditer un Detail Doc Ach",
+        "notFound": "Aucun Detail Doc Ach trouvé"
+      },
+      "created": "Un nouveau Detail Doc Ach a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Detail Doc Ach avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Detail Doc Ach avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Detail Doc Ach {{ id }} ?"
+      },
+      "detail": {
+        "title": "Detail Doc Ach"
+      },
+      "id": "Id",
+      "prixUnit": "Prix Unit",
+      "prixunitnet": "Prixunitnet",
+      "montligne": "Montligne",
+      "qteUnit": "Qte Unit",
+      "remise": "Remise",
+      "quantitecolis": "Quantitecolis",
+      "designation": "Designation",
+      "produit": "Produit",
+      "documentAchat": "Document Achat"
+    }
+  }
+}

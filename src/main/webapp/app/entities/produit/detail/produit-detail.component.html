@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="produit">
+      <h2 data-cy="produitDetailsHeading"><span jhiTranslate="jadeApp.produit.detail.title">Produit</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jadeApp.produit.id">Id</span></dt>
+        <dd>
+          <span>{{ produit.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.produit.libelle">Libelle</span></dt>
+        <dd>
+          <span>{{ produit.libelle }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.produit.stockinit">Stockinit</span></dt>
+        <dd>
+          <span>{{ produit.stockinit }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.produit.stockApprov">Stock Approv</span></dt>
+        <dd>
+          <span>{{ produit.stockApprov }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.produit.boissonPrixUnitairenet">Boisson Prix Unitairenet</span></dt>
+        <dd>
+          <span>{{ produit.boissonPrixUnitairenet }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.produit.societe">Societe</span></dt>
+        <dd>
+          <div *ngIf="produit.societe">
+            <a [routerLink]="['/societe', produit.societe?.id, 'view']">{{ produit.societe?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.produit.typeProduit">Type Produit</span></dt>
+        <dd>
+          <div *ngIf="produit.typeProduit">
+            <a [routerLink]="['/type-produit', produit.typeProduit?.id, 'view']">{{ produit.typeProduit?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/produit', produit.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

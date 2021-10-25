@@ -1,0 +1,26 @@
+{
+  "jadeApp": {
+    "typeProduit": {
+      "home": {
+        "title": "TypeProduits",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Type Produit",
+        "createOrEditLabel": "Créer ou éditer un Type Produit",
+        "notFound": "Aucun Type Produit trouvé"
+      },
+      "created": "Un nouveau Type Produit a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Produit avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Produit avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Type Produit {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Produit"
+      },
+      "id": "Id",
+      "libelle": "Libelle",
+      "description": "Description",
+      "produit": "Produit"
+    }
+  }
+}

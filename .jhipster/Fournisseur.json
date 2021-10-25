@@ -1,0 +1,71 @@
+{
+  "name": "Fournisseur",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "fieldValidateRules": ["unique", "required"]
+    },
+    {
+      "fieldName": "codeFournisseur",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "raisonFournisseur",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "adrfournisseur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paysFournisseur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "villeFournisseur",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mailFournisseur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "celFournisseur",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "telFournisseur",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "societe",
+      "otherEntityRelationshipName": "fournisseur",
+      "relationshipName": "societe"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "documentAchat",
+      "otherEntityRelationshipName": "fournisseur",
+      "relationshipName": "documentAchat",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "fournisseur",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["Jade"],
+  "changelogDate": "20211025163506"
+}

@@ -1,0 +1,231 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-societe-heading" data-cy="SocieteCreateUpdateHeading" jhiTranslate="jadeApp.societe.home.createOrEditLabel">
+        Create or edit a Societe
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          <div *ngIf="editForm.get('id')!.invalid && (editForm.get('id')!.dirty || editForm.get('id')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('id')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('id')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.raisonsoc" for="field_raisonsoc">Raisonsoc</label>
+          <input type="text" class="form-control" name="raisonsoc" id="field_raisonsoc" data-cy="raisonsoc" formControlName="raisonsoc" />
+          <div *ngIf="editForm.get('raisonsoc')!.invalid && (editForm.get('raisonsoc')!.dirty || editForm.get('raisonsoc')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('raisonsoc')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.sigle" for="field_sigle">Sigle</label>
+          <input type="text" class="form-control" name="sigle" id="field_sigle" data-cy="sigle" formControlName="sigle" />
+          <div *ngIf="editForm.get('sigle')!.invalid && (editForm.get('sigle')!.dirty || editForm.get('sigle')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('sigle')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.activitepp" for="field_activitepp">Activitepp</label>
+          <input
+            type="text"
+            class="form-control"
+            name="activitepp"
+            id="field_activitepp"
+            data-cy="activitepp"
+            formControlName="activitepp"
+          />
+          <div *ngIf="editForm.get('activitepp')!.invalid && (editForm.get('activitepp')!.dirty || editForm.get('activitepp')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('activitepp')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.adressgeo" for="field_adressgeo">Adressgeo</label>
+          <input type="text" class="form-control" name="adressgeo" id="field_adressgeo" data-cy="adressgeo" formControlName="adressgeo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.formjuri" for="field_formjuri">Formjuri</label>
+          <input type="text" class="form-control" name="formjuri" id="field_formjuri" data-cy="formjuri" formControlName="formjuri" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.telephone" for="field_telephone">Telephone</label>
+          <input type="text" class="form-control" name="telephone" id="field_telephone" data-cy="telephone" formControlName="telephone" />
+          <div *ngIf="editForm.get('telephone')!.invalid && (editForm.get('telephone')!.dirty || editForm.get('telephone')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('telephone')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.bp" for="field_bp">Bp</label>
+          <input type="text" class="form-control" name="bp" id="field_bp" data-cy="bp" formControlName="bp" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.registreCce" for="field_registreCce">Registre Cce</label>
+          <input
+            type="text"
+            class="form-control"
+            name="registreCce"
+            id="field_registreCce"
+            data-cy="registreCce"
+            formControlName="registreCce"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.pays" for="field_pays">Pays</label>
+          <input type="text" class="form-control" name="pays" id="field_pays" data-cy="pays" formControlName="pays" />
+          <div *ngIf="editForm.get('pays')!.invalid && (editForm.get('pays')!.dirty || editForm.get('pays')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('pays')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.ville" for="field_ville">Ville</label>
+          <input type="text" class="form-control" name="ville" id="field_ville" data-cy="ville" formControlName="ville" />
+          <div *ngIf="editForm.get('ville')!.invalid && (editForm.get('ville')!.dirty || editForm.get('ville')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ville')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.commune" for="field_commune">Commune</label>
+          <input type="text" class="form-control" name="commune" id="field_commune" data-cy="commune" formControlName="commune" />
+          <div *ngIf="editForm.get('commune')!.invalid && (editForm.get('commune')!.dirty || editForm.get('commune')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('commune')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.actif" for="field_actif">Actif</label>
+          <input type="checkbox" class="form-check" name="actif" id="field_actif" data-cy="actif" formControlName="actif" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.fileData" for="field_fileData">File Data</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('fileDataContentType')!.value + ';base64,' + editForm.get('fileData')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('fileData')!.value"
+              alt="societe image"
+            />
+            <div *ngIf="editForm.get('fileData')!.value" class="form-text text-danger clearfix">
+              <span class="pull-left"
+                >{{ editForm.get('fileDataContentType')!.value }}, {{ byteSize(editForm.get('fileData')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="clearInputImage('fileData', 'fileDataContentType', 'file_fileData')"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_fileData"
+              data-cy="fileData"
+              (change)="setFileData($event, 'fileData', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="fileData" id="field_fileData" data-cy="fileData" formControlName="fileData" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="fileDataContentType"
+            id="field_fileDataContentType"
+            formControlName="fileDataContentType"
+          />
+          <div *ngIf="editForm.get('fileData')!.invalid && (editForm.get('fileData')!.dirty || editForm.get('fileData')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fileData')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.societe.urlLogo" for="field_urlLogo">Url Logo</label>
+          <input type="text" class="form-control" name="urlLogo" id="field_urlLogo" data-cy="urlLogo" formControlName="urlLogo" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

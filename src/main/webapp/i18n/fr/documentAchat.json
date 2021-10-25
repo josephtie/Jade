@@ -1,0 +1,32 @@
+{
+  "jadeApp": {
+    "documentAchat": {
+      "home": {
+        "title": "DocumentAchats",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Document Achat",
+        "createOrEditLabel": "Créer ou éditer un Document Achat",
+        "notFound": "Aucun Document Achat trouvé"
+      },
+      "created": "Un nouveau Document Achat a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Document Achat avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Document Achat avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Document Achat {{ id }} ?"
+      },
+      "detail": {
+        "title": "Document Achat"
+      },
+      "id": "Id",
+      "dateSaisie": "Date Saisie",
+      "taxe": "Taxe",
+      "observation": "Observation",
+      "montantht": "Montantht",
+      "montantttc": "Montantttc",
+      "fournisseur": "Fournisseur",
+      "societe": "Societe",
+      "detailDocAch": "Detail Doc Ach",
+      "detailsStock": "Details Stock"
+    }
+  }
+}

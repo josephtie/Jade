@@ -1,0 +1,97 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="societe">
+      <h2 data-cy="societeDetailsHeading"><span jhiTranslate="jadeApp.societe.detail.title">Societe</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jadeApp.societe.id">Id</span></dt>
+        <dd>
+          <span>{{ societe.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.raisonsoc">Raisonsoc</span></dt>
+        <dd>
+          <span>{{ societe.raisonsoc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.sigle">Sigle</span></dt>
+        <dd>
+          <span>{{ societe.sigle }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.activitepp">Activitepp</span></dt>
+        <dd>
+          <span>{{ societe.activitepp }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.adressgeo">Adressgeo</span></dt>
+        <dd>
+          <span>{{ societe.adressgeo }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.formjuri">Formjuri</span></dt>
+        <dd>
+          <span>{{ societe.formjuri }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.telephone">Telephone</span></dt>
+        <dd>
+          <span>{{ societe.telephone }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.bp">Bp</span></dt>
+        <dd>
+          <span>{{ societe.bp }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.registreCce">Registre Cce</span></dt>
+        <dd>
+          <span>{{ societe.registreCce }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.pays">Pays</span></dt>
+        <dd>
+          <span>{{ societe.pays }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.ville">Ville</span></dt>
+        <dd>
+          <span>{{ societe.ville }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.commune">Commune</span></dt>
+        <dd>
+          <span>{{ societe.commune }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.email">Email</span></dt>
+        <dd>
+          <span>{{ societe.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.actif">Actif</span></dt>
+        <dd>
+          <span>{{ societe.actif }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.fileData">File Data</span></dt>
+        <dd>
+          <div *ngIf="societe.fileData">
+            <a (click)="openFile(societe.fileData, societe.fileDataContentType)">
+              <img
+                [src]="'data:' + societe.fileDataContentType + ';base64,' + societe.fileData"
+                style="max-width: 100%"
+                alt="societe image"
+              />
+            </a>
+            {{ societe.fileDataContentType }}, {{ byteSize(societe.fileData) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.societe.urlLogo">Url Logo</span></dt>
+        <dd>
+          <span>{{ societe.urlLogo }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/societe', societe.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

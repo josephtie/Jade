@@ -1,0 +1,145 @@
+
+application {
+  config {
+    baseName    Jade
+    applicationType monolith,
+    packageName com.ashergadiel.manage,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework angular
+  }
+  entities *
+}
+entity Societe {
+ id Long  unique required 
+ raisonsoc String  required
+ sigle String required
+ activitepp String required
+  adressgeo String 
+ formjuri String
+  telephone String required
+  bp String
+registreCce String
+pays String  required
+ville String  required
+commune String required
+email String required 
+ actif Boolean
+  fileData ImageBlob required
+  urlLogo String
+}
+entity TypeProduit {
+id Long  unique required 
+ libelle String  required
+ description String
+}
+entity Produit {
+ id Long  unique required 
+ libelle String  required
+ stockinit Double required
+stockApprov Double 
+ boissonPrixUnitairenet Double 
+ 
+}
+
+entity DocumentAchat {
+ id Long unique
+	dateSaisie LocalDate required 
+	taxe Double required
+	observation String 
+         montantht Double required
+	montantttc Double  required
+}
+entity DocumentVente {
+ id Long unique
+	dateSaisie LocalDate  
+	taxe Double 
+	observation String 
+         montantht Double
+	montantttc Double 
+}
+entity DocumentSortie {
+id Long unique
+	dateSaisie LocalDate  
+	taxe Double 
+	observation String 
+         montantht Double
+	montantttc Double 
+}
+entity DetailDocAch{
+   id Long unique
+	prixUnit Double required
+	prixunitnet Double 
+	montligne Double required
+	qteUnit Double  required
+        remise Double 
+	quantitecolis Double 
+	designation String 
+}
+entity DetailDocVte{
+ id Long unique
+	prixUnit Double required
+	prixunitnet Double 
+	montligne Double required
+	qteUnit Double  required
+        remise Double 
+	quantitecolis Double 
+	designation String 
+}
+entity DetailsStock{
+id Long unique required
+	stkQTEentrant Double required
+	stkQTEinitial Double required
+        stkQTEreel Double required
+	idCommande Long 
+	idVente Long 
+	idSortie Long 
+        dateSaisie LocalDate 
+        montunitaireOP Double
+}
+entity Fournisseur{
+id Long  unique required 
+ codeFournisseur String required
+	raisonFournisseur String required
+	adrfournisseur String 
+    paysFournisseur String 
+	villeFournisseur String required
+	mailFournisseur String 
+	celFournisseur String  required
+	telFournisseur String
+}
+
+relationship ManyToOne {
+ DetailDocAch  to Produit
+ DetailDocAch  to DocumentAchat
+} 
+
+relationship ManyToOne {
+ DetailsStock to Produit
+ DetailsStock  to DocumentAchat
+  DetailsStock  to DocumentVente
+  DetailsStock  to DocumentSortie
+   DetailsStock  to Societe
+}
+
+relationship ManyToOne {
+ DetailDocVte  to Produit
+ DetailDocVte  to DocumentVente
+} 
+relationship ManyToOne {
+  Produit to Societe 
+} 
+
+relationship ManyToOne {
+  Fournisseur to Societe 
+ DocumentAchat to Societe 
+} 
+
+relationship OneToOne {
+  DocumentAchat to Fournisseur 
+   
+} 
+relationship ManyToOne {
+  Produit to TypeProduit 
+} 
+    

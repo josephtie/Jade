@@ -1,0 +1,30 @@
+{
+  "jadeApp": {
+    "documentVente": {
+      "home": {
+        "title": "DocumentVentes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Document Vente",
+        "createOrEditLabel": "Créer ou éditer un Document Vente",
+        "notFound": "Aucun Document Vente trouvé"
+      },
+      "created": "Un nouveau Document Vente a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Document Vente avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Document Vente avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Document Vente {{ id }} ?"
+      },
+      "detail": {
+        "title": "Document Vente"
+      },
+      "id": "Id",
+      "dateSaisie": "Date Saisie",
+      "taxe": "Taxe",
+      "observation": "Observation",
+      "montantht": "Montantht",
+      "montantttc": "Montantttc",
+      "detailsStock": "Details Stock",
+      "detailDocVte": "Detail Doc Vte"
+    }
+  }
+}

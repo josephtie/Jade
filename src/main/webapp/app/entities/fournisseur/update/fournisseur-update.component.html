@@ -1,0 +1,222 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-fournisseur-heading" data-cy="FournisseurCreateUpdateHeading" jhiTranslate="jadeApp.fournisseur.home.createOrEditLabel">
+        Create or edit a Fournisseur
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="jadeApp.fournisseur.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          <div *ngIf="editForm.get('id')!.invalid && (editForm.get('id')!.dirty || editForm.get('id')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('id')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('id')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.fournisseur.codeFournisseur" for="field_codeFournisseur"
+            >Code Fournisseur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="codeFournisseur"
+            id="field_codeFournisseur"
+            data-cy="codeFournisseur"
+            formControlName="codeFournisseur"
+          />
+          <div
+            *ngIf="
+              editForm.get('codeFournisseur')!.invalid &&
+              (editForm.get('codeFournisseur')!.dirty || editForm.get('codeFournisseur')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('codeFournisseur')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.fournisseur.raisonFournisseur" for="field_raisonFournisseur"
+            >Raison Fournisseur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="raisonFournisseur"
+            id="field_raisonFournisseur"
+            data-cy="raisonFournisseur"
+            formControlName="raisonFournisseur"
+          />
+          <div
+            *ngIf="
+              editForm.get('raisonFournisseur')!.invalid &&
+              (editForm.get('raisonFournisseur')!.dirty || editForm.get('raisonFournisseur')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('raisonFournisseur')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.fournisseur.adrfournisseur" for="field_adrfournisseur"
+            >Adrfournisseur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="adrfournisseur"
+            id="field_adrfournisseur"
+            data-cy="adrfournisseur"
+            formControlName="adrfournisseur"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.fournisseur.paysFournisseur" for="field_paysFournisseur"
+            >Pays Fournisseur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="paysFournisseur"
+            id="field_paysFournisseur"
+            data-cy="paysFournisseur"
+            formControlName="paysFournisseur"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.fournisseur.villeFournisseur" for="field_villeFournisseur"
+            >Ville Fournisseur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="villeFournisseur"
+            id="field_villeFournisseur"
+            data-cy="villeFournisseur"
+            formControlName="villeFournisseur"
+          />
+          <div
+            *ngIf="
+              editForm.get('villeFournisseur')!.invalid &&
+              (editForm.get('villeFournisseur')!.dirty || editForm.get('villeFournisseur')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('villeFournisseur')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.fournisseur.mailFournisseur" for="field_mailFournisseur"
+            >Mail Fournisseur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="mailFournisseur"
+            id="field_mailFournisseur"
+            data-cy="mailFournisseur"
+            formControlName="mailFournisseur"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.fournisseur.celFournisseur" for="field_celFournisseur"
+            >Cel Fournisseur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="celFournisseur"
+            id="field_celFournisseur"
+            data-cy="celFournisseur"
+            formControlName="celFournisseur"
+          />
+          <div
+            *ngIf="
+              editForm.get('celFournisseur')!.invalid && (editForm.get('celFournisseur')!.dirty || editForm.get('celFournisseur')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('celFournisseur')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.fournisseur.telFournisseur" for="field_telFournisseur"
+            >Tel Fournisseur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="telFournisseur"
+            id="field_telFournisseur"
+            data-cy="telFournisseur"
+            formControlName="telFournisseur"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.fournisseur.societe" for="field_societe">Societe</label>
+          <select class="form-control" id="field_societe" data-cy="societe" name="societe" formControlName="societe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="societeOption.id === editForm.get('societe')!.value?.id ? editForm.get('societe')!.value : societeOption"
+              *ngFor="let societeOption of societesSharedCollection; trackBy: trackSocieteById"
+            >
+              {{ societeOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

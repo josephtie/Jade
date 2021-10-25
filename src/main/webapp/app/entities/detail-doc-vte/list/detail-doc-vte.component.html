@@ -1,0 +1,102 @@
+<div>
+  <h2 id="page-heading" data-cy="DetailDocVteHeading">
+    <span jhiTranslate="jadeApp.detailDocVte.home.title">Detail Doc Vtes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jadeApp.detailDocVte.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-detail-doc-vte"
+        [routerLink]="['/detail-doc-vte/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jadeApp.detailDocVte.home.createLabel"> Create a new Detail Doc Vte </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="detailDocVtes?.length === 0">
+    <span jhiTranslate="jadeApp.detailDocVte.home.notFound">No detailDocVtes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="detailDocVtes && detailDocVtes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocVte.id">Id</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocVte.prixUnit">Prix Unit</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocVte.prixunitnet">Prixunitnet</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocVte.montligne">Montligne</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocVte.qteUnit">Qte Unit</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocVte.remise">Remise</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocVte.quantitecolis">Quantitecolis</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocVte.designation">Designation</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocVte.produit">Produit</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocVte.documentVente">Document Vente</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detailDocVte of detailDocVtes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/detail-doc-vte', detailDocVte.id, 'view']">{{ detailDocVte.id }}</a>
+          </td>
+          <td>{{ detailDocVte.prixUnit }}</td>
+          <td>{{ detailDocVte.prixunitnet }}</td>
+          <td>{{ detailDocVte.montligne }}</td>
+          <td>{{ detailDocVte.qteUnit }}</td>
+          <td>{{ detailDocVte.remise }}</td>
+          <td>{{ detailDocVte.quantitecolis }}</td>
+          <td>{{ detailDocVte.designation }}</td>
+          <td>
+            <div *ngIf="detailDocVte.produit">
+              <a [routerLink]="['/produit', detailDocVte.produit?.id, 'view']">{{ detailDocVte.produit?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="detailDocVte.documentVente">
+              <a [routerLink]="['/document-vente', detailDocVte.documentVente?.id, 'view']">{{ detailDocVte.documentVente?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/detail-doc-vte', detailDocVte.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/detail-doc-vte', detailDocVte.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(detailDocVte)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

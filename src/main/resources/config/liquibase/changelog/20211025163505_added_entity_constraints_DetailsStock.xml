@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity DetailsStock.
+    -->
+    <changeSet id="20211025163505-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="produit_id"
+                                 baseTableName="details_stock"
+                                 constraintName="fk_details_stock__produit_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="produit"/>
+
+        <addForeignKeyConstraint baseColumnNames="document_achat_id"
+                                 baseTableName="details_stock"
+                                 constraintName="fk_details_stock__document_achat_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="document_achat"/>
+
+        <addForeignKeyConstraint baseColumnNames="document_vente_id"
+                                 baseTableName="details_stock"
+                                 constraintName="fk_details_stock__document_vente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="document_vente"/>
+
+        <addForeignKeyConstraint baseColumnNames="document_sortie_id"
+                                 baseTableName="details_stock"
+                                 constraintName="fk_details_stock__document_sortie_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="document_sortie"/>
+
+        <addForeignKeyConstraint baseColumnNames="societe_id"
+                                 baseTableName="details_stock"
+                                 constraintName="fk_details_stock__societe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="societe"/>
+    </changeSet>
+</databaseChangeLog>

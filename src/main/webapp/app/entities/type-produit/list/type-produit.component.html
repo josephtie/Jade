@@ -1,0 +1,80 @@
+<div>
+  <h2 id="page-heading" data-cy="TypeProduitHeading">
+    <span jhiTranslate="jadeApp.typeProduit.home.title">Type Produits</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jadeApp.typeProduit.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-type-produit"
+        [routerLink]="['/type-produit/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jadeApp.typeProduit.home.createLabel"> Create a new Type Produit </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="typeProduits?.length === 0">
+    <span jhiTranslate="jadeApp.typeProduit.home.notFound">No typeProduits found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="typeProduits && typeProduits.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="jadeApp.typeProduit.id">Id</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.typeProduit.libelle">Libelle</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.typeProduit.description">Description</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let typeProduit of typeProduits; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/type-produit', typeProduit.id, 'view']">{{ typeProduit.id }}</a>
+          </td>
+          <td>{{ typeProduit.libelle }}</td>
+          <td>{{ typeProduit.description }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/type-produit', typeProduit.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/type-produit', typeProduit.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(typeProduit)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
