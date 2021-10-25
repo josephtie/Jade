@@ -1,0 +1,115 @@
+<div>
+  <h2 id="page-heading" data-cy="SocieteHeading">
+    <span jhiTranslate="jadeApp.societe.home.title">Societes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jadeApp.societe.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-societe"
+        [routerLink]="['/societe/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jadeApp.societe.home.createLabel"> Create a new Societe </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="societes?.length === 0">
+    <span jhiTranslate="jadeApp.societe.home.notFound">No societes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="societes && societes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.id">Id</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.raisonsoc">Raisonsoc</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.sigle">Sigle</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.activitepp">Activitepp</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.adressgeo">Adressgeo</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.formjuri">Formjuri</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.telephone">Telephone</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.bp">Bp</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.registreCce">Registre Cce</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.pays">Pays</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.ville">Ville</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.commune">Commune</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.email">Email</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.actif">Actif</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.fileData">File Data</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.societe.urlLogo">Url Logo</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let societe of societes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/societe', societe.id, 'view']">{{ societe.id }}</a>
+          </td>
+          <td>{{ societe.raisonsoc }}</td>
+          <td>{{ societe.sigle }}</td>
+          <td>{{ societe.activitepp }}</td>
+          <td>{{ societe.adressgeo }}</td>
+          <td>{{ societe.formjuri }}</td>
+          <td>{{ societe.telephone }}</td>
+          <td>{{ societe.bp }}</td>
+          <td>{{ societe.registreCce }}</td>
+          <td>{{ societe.pays }}</td>
+          <td>{{ societe.ville }}</td>
+          <td>{{ societe.commune }}</td>
+          <td>{{ societe.email }}</td>
+          <td>{{ societe.actif }}</td>
+          <td>
+            <a *ngIf="societe.fileData" (click)="openFile(societe.fileData, societe.fileDataContentType)">
+              <img
+                [src]="'data:' + societe.fileDataContentType + ';base64,' + societe.fileData"
+                style="max-height: 30px"
+                alt="societe image"
+              />
+            </a>
+            <span *ngIf="societe.fileData">{{ societe.fileDataContentType }}, {{ byteSize(societe.fileData) }}</span>
+          </td>
+          <td>{{ societe.urlLogo }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/societe', societe.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/societe', societe.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(societe)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

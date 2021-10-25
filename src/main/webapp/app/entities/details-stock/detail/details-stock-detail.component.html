@@ -1,0 +1,90 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="detailsStock">
+      <h2 data-cy="detailsStockDetailsHeading"><span jhiTranslate="jadeApp.detailsStock.detail.title">Details Stock</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jadeApp.detailsStock.id">Id</span></dt>
+        <dd>
+          <span>{{ detailsStock.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.stkQTEentrant">Stk QT Eentrant</span></dt>
+        <dd>
+          <span>{{ detailsStock.stkQTEentrant }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.stkQTEinitial">Stk QT Einitial</span></dt>
+        <dd>
+          <span>{{ detailsStock.stkQTEinitial }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.stkQTEreel">Stk QT Ereel</span></dt>
+        <dd>
+          <span>{{ detailsStock.stkQTEreel }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.idCommande">Id Commande</span></dt>
+        <dd>
+          <span>{{ detailsStock.idCommande }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.idVente">Id Vente</span></dt>
+        <dd>
+          <span>{{ detailsStock.idVente }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.idSortie">Id Sortie</span></dt>
+        <dd>
+          <span>{{ detailsStock.idSortie }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.dateSaisie">Date Saisie</span></dt>
+        <dd>
+          <span>{{ detailsStock.dateSaisie | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.montunitaireOP">Montunitaire OP</span></dt>
+        <dd>
+          <span>{{ detailsStock.montunitaireOP }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.produit">Produit</span></dt>
+        <dd>
+          <div *ngIf="detailsStock.produit">
+            <a [routerLink]="['/produit', detailsStock.produit?.id, 'view']">{{ detailsStock.produit?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.documentAchat">Document Achat</span></dt>
+        <dd>
+          <div *ngIf="detailsStock.documentAchat">
+            <a [routerLink]="['/document-achat', detailsStock.documentAchat?.id, 'view']">{{ detailsStock.documentAchat?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.documentVente">Document Vente</span></dt>
+        <dd>
+          <div *ngIf="detailsStock.documentVente">
+            <a [routerLink]="['/document-vente', detailsStock.documentVente?.id, 'view']">{{ detailsStock.documentVente?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.documentSortie">Document Sortie</span></dt>
+        <dd>
+          <div *ngIf="detailsStock.documentSortie">
+            <a [routerLink]="['/document-sortie', detailsStock.documentSortie?.id, 'view']">{{ detailsStock.documentSortie?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailsStock.societe">Societe</span></dt>
+        <dd>
+          <div *ngIf="detailsStock.societe">
+            <a [routerLink]="['/societe', detailsStock.societe?.id, 'view']">{{ detailsStock.societe?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/details-stock', detailsStock.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

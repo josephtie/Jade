@@ -1,0 +1,70 @@
+{
+  "name": "Produit",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "fieldValidateRules": ["unique", "required"]
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "stockinit",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "stockApprov",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "boissonPrixUnitairenet",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "societe",
+      "otherEntityRelationshipName": "produit",
+      "relationshipName": "societe"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeProduit",
+      "otherEntityRelationshipName": "produit",
+      "relationshipName": "typeProduit"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "detailDocAch",
+      "otherEntityRelationshipName": "produit",
+      "relationshipName": "detailDocAch"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "detailsStock",
+      "otherEntityRelationshipName": "produit",
+      "relationshipName": "detailsStock"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "detailDocVte",
+      "otherEntityRelationshipName": "produit",
+      "relationshipName": "detailDocVte"
+    }
+  ],
+  "entityTableName": "produit",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["Jade"],
+  "changelogDate": "20211025160924"
+}

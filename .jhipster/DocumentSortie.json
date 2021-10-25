@@ -1,0 +1,48 @@
+{
+  "name": "DocumentSortie",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "dateSaisie",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "taxe",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "observation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "montantht",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "montantttc",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "detailsStock",
+      "otherEntityRelationshipName": "documentSortie",
+      "relationshipName": "detailsStock"
+    }
+  ],
+  "entityTableName": "document_sortie",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["Jade"],
+  "changelogDate": "20211025160927"
+}

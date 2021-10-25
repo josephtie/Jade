@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="detailDocVte">
+      <h2 data-cy="detailDocVteDetailsHeading"><span jhiTranslate="jadeApp.detailDocVte.detail.title">Detail Doc Vte</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jadeApp.detailDocVte.id">Id</span></dt>
+        <dd>
+          <span>{{ detailDocVte.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocVte.prixUnit">Prix Unit</span></dt>
+        <dd>
+          <span>{{ detailDocVte.prixUnit }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocVte.prixunitnet">Prixunitnet</span></dt>
+        <dd>
+          <span>{{ detailDocVte.prixunitnet }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocVte.montligne">Montligne</span></dt>
+        <dd>
+          <span>{{ detailDocVte.montligne }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocVte.qteUnit">Qte Unit</span></dt>
+        <dd>
+          <span>{{ detailDocVte.qteUnit }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocVte.remise">Remise</span></dt>
+        <dd>
+          <span>{{ detailDocVte.remise }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocVte.quantitecolis">Quantitecolis</span></dt>
+        <dd>
+          <span>{{ detailDocVte.quantitecolis }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocVte.designation">Designation</span></dt>
+        <dd>
+          <span>{{ detailDocVte.designation }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocVte.produit">Produit</span></dt>
+        <dd>
+          <div *ngIf="detailDocVte.produit">
+            <a [routerLink]="['/produit', detailDocVte.produit?.id, 'view']">{{ detailDocVte.produit?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocVte.documentVente">Document Vente</span></dt>
+        <dd>
+          <div *ngIf="detailDocVte.documentVente">
+            <a [routerLink]="['/document-vente', detailDocVte.documentVente?.id, 'view']">{{ detailDocVte.documentVente?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/detail-doc-vte', detailDocVte.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+<div>
+  <h2 id="page-heading" data-cy="ProduitHeading">
+    <span jhiTranslate="jadeApp.produit.home.title">Produits</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jadeApp.produit.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-produit"
+        [routerLink]="['/produit/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jadeApp.produit.home.createLabel"> Create a new Produit </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="produits?.length === 0">
+    <span jhiTranslate="jadeApp.produit.home.notFound">No produits found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="produits && produits.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="jadeApp.produit.id">Id</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.produit.libelle">Libelle</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.produit.stockinit">Stockinit</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.produit.stockApprov">Stock Approv</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.produit.boissonPrixUnitairenet">Boisson Prix Unitairenet</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.produit.societe">Societe</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.produit.typeProduit">Type Produit</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produit of produits; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/produit', produit.id, 'view']">{{ produit.id }}</a>
+          </td>
+          <td>{{ produit.libelle }}</td>
+          <td>{{ produit.stockinit }}</td>
+          <td>{{ produit.stockApprov }}</td>
+          <td>{{ produit.boissonPrixUnitairenet }}</td>
+          <td>
+            <div *ngIf="produit.societe">
+              <a [routerLink]="['/societe', produit.societe?.id, 'view']">{{ produit.societe?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="produit.typeProduit">
+              <a [routerLink]="['/type-produit', produit.typeProduit?.id, 'view']">{{ produit.typeProduit?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/produit', produit.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/produit', produit.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(produit)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

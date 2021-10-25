@@ -1,0 +1,300 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-details-stock-heading"
+        data-cy="DetailsStockCreateUpdateHeading"
+        jhiTranslate="jadeApp.detailsStock.home.createOrEditLabel"
+      >
+        Create or edit a Details Stock
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          <div *ngIf="editForm.get('id')!.invalid && (editForm.get('id')!.dirty || editForm.get('id')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('id')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('id')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.stkQTEentrant" for="field_stkQTEentrant"
+            >Stk QT Eentrant</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="stkQTEentrant"
+            id="field_stkQTEentrant"
+            data-cy="stkQTEentrant"
+            formControlName="stkQTEentrant"
+          />
+          <div
+            *ngIf="
+              editForm.get('stkQTEentrant')!.invalid && (editForm.get('stkQTEentrant')!.dirty || editForm.get('stkQTEentrant')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('stkQTEentrant')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('stkQTEentrant')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.stkQTEinitial" for="field_stkQTEinitial"
+            >Stk QT Einitial</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="stkQTEinitial"
+            id="field_stkQTEinitial"
+            data-cy="stkQTEinitial"
+            formControlName="stkQTEinitial"
+          />
+          <div
+            *ngIf="
+              editForm.get('stkQTEinitial')!.invalid && (editForm.get('stkQTEinitial')!.dirty || editForm.get('stkQTEinitial')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('stkQTEinitial')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('stkQTEinitial')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.stkQTEreel" for="field_stkQTEreel">Stk QT Ereel</label>
+          <input
+            type="number"
+            class="form-control"
+            name="stkQTEreel"
+            id="field_stkQTEreel"
+            data-cy="stkQTEreel"
+            formControlName="stkQTEreel"
+          />
+          <div *ngIf="editForm.get('stkQTEreel')!.invalid && (editForm.get('stkQTEreel')!.dirty || editForm.get('stkQTEreel')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('stkQTEreel')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('stkQTEreel')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.idCommande" for="field_idCommande">Id Commande</label>
+          <input
+            type="number"
+            class="form-control"
+            name="idCommande"
+            id="field_idCommande"
+            data-cy="idCommande"
+            formControlName="idCommande"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.idVente" for="field_idVente">Id Vente</label>
+          <input type="number" class="form-control" name="idVente" id="field_idVente" data-cy="idVente" formControlName="idVente" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.idSortie" for="field_idSortie">Id Sortie</label>
+          <input type="number" class="form-control" name="idSortie" id="field_idSortie" data-cy="idSortie" formControlName="idSortie" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.dateSaisie" for="field_dateSaisie">Date Saisie</label>
+          <div class="input-group">
+            <input
+              id="field_dateSaisie"
+              data-cy="dateSaisie"
+              type="text"
+              class="form-control"
+              name="dateSaisie"
+              ngbDatepicker
+              #dateSaisieDp="ngbDatepicker"
+              formControlName="dateSaisie"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateSaisieDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.montunitaireOP" for="field_montunitaireOP"
+            >Montunitaire OP</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="montunitaireOP"
+            id="field_montunitaireOP"
+            data-cy="montunitaireOP"
+            formControlName="montunitaireOP"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.produit" for="field_produit">Produit</label>
+          <select class="form-control" id="field_produit" data-cy="produit" name="produit" formControlName="produit">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="produitOption.id === editForm.get('produit')!.value?.id ? editForm.get('produit')!.value : produitOption"
+              *ngFor="let produitOption of produitsSharedCollection; trackBy: trackProduitById"
+            >
+              {{ produitOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.documentAchat" for="field_documentAchat"
+            >Document Achat</label
+          >
+          <select
+            class="form-control"
+            id="field_documentAchat"
+            data-cy="documentAchat"
+            name="documentAchat"
+            formControlName="documentAchat"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                documentAchatOption.id === editForm.get('documentAchat')!.value?.id
+                  ? editForm.get('documentAchat')!.value
+                  : documentAchatOption
+              "
+              *ngFor="let documentAchatOption of documentAchatsSharedCollection; trackBy: trackDocumentAchatById"
+            >
+              {{ documentAchatOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.documentVente" for="field_documentVente"
+            >Document Vente</label
+          >
+          <select
+            class="form-control"
+            id="field_documentVente"
+            data-cy="documentVente"
+            name="documentVente"
+            formControlName="documentVente"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                documentVenteOption.id === editForm.get('documentVente')!.value?.id
+                  ? editForm.get('documentVente')!.value
+                  : documentVenteOption
+              "
+              *ngFor="let documentVenteOption of documentVentesSharedCollection; trackBy: trackDocumentVenteById"
+            >
+              {{ documentVenteOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.documentSortie" for="field_documentSortie"
+            >Document Sortie</label
+          >
+          <select
+            class="form-control"
+            id="field_documentSortie"
+            data-cy="documentSortie"
+            name="documentSortie"
+            formControlName="documentSortie"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                documentSortieOption.id === editForm.get('documentSortie')!.value?.id
+                  ? editForm.get('documentSortie')!.value
+                  : documentSortieOption
+              "
+              *ngFor="let documentSortieOption of documentSortiesSharedCollection; trackBy: trackDocumentSortieById"
+            >
+              {{ documentSortieOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailsStock.societe" for="field_societe">Societe</label>
+          <select class="form-control" id="field_societe" data-cy="societe" name="societe" formControlName="societe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="societeOption.id === editForm.get('societe')!.value?.id ? editForm.get('societe')!.value : societeOption"
+              *ngFor="let societeOption of societesSharedCollection; trackBy: trackSocieteById"
+            >
+              {{ societeOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
