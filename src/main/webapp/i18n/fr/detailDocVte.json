@@ -1,0 +1,32 @@
+{
+  "jadeApp": {
+    "detailDocVte": {
+      "home": {
+        "title": "DetailDocVtes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Detail Doc Vte",
+        "createOrEditLabel": "Créer ou éditer un Detail Doc Vte",
+        "notFound": "Aucun Detail Doc Vte trouvé"
+      },
+      "created": "Un nouveau Detail Doc Vte a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Detail Doc Vte avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Detail Doc Vte avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Detail Doc Vte {{ id }} ?"
+      },
+      "detail": {
+        "title": "Detail Doc Vte"
+      },
+      "id": "Id",
+      "prixUnit": "Prix Unit",
+      "prixunitnet": "Prixunitnet",
+      "montligne": "Montligne",
+      "qteUnit": "Qte Unit",
+      "remise": "Remise",
+      "quantitecolis": "Quantitecolis",
+      "designation": "Designation",
+      "produit": "Produit",
+      "documentVente": "Document Vente"
+    }
+  }
+}

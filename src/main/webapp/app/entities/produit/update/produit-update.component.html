@@ -1,0 +1,131 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-produit-heading" data-cy="ProduitCreateUpdateHeading" jhiTranslate="jadeApp.produit.home.createOrEditLabel">
+        Create or edit a Produit
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="jadeApp.produit.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          <div *ngIf="editForm.get('id')!.invalid && (editForm.get('id')!.dirty || editForm.get('id')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('id')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('id')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.produit.libelle" for="field_libelle">Libelle</label>
+          <input type="text" class="form-control" name="libelle" id="field_libelle" data-cy="libelle" formControlName="libelle" />
+          <div *ngIf="editForm.get('libelle')!.invalid && (editForm.get('libelle')!.dirty || editForm.get('libelle')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('libelle')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.produit.stockinit" for="field_stockinit">Stockinit</label>
+          <input type="number" class="form-control" name="stockinit" id="field_stockinit" data-cy="stockinit" formControlName="stockinit" />
+          <div *ngIf="editForm.get('stockinit')!.invalid && (editForm.get('stockinit')!.dirty || editForm.get('stockinit')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('stockinit')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('stockinit')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.produit.stockApprov" for="field_stockApprov">Stock Approv</label>
+          <input
+            type="number"
+            class="form-control"
+            name="stockApprov"
+            id="field_stockApprov"
+            data-cy="stockApprov"
+            formControlName="stockApprov"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.produit.boissonPrixUnitairenet" for="field_boissonPrixUnitairenet"
+            >Boisson Prix Unitairenet</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="boissonPrixUnitairenet"
+            id="field_boissonPrixUnitairenet"
+            data-cy="boissonPrixUnitairenet"
+            formControlName="boissonPrixUnitairenet"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.produit.societe" for="field_societe">Societe</label>
+          <select class="form-control" id="field_societe" data-cy="societe" name="societe" formControlName="societe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="societeOption.id === editForm.get('societe')!.value?.id ? editForm.get('societe')!.value : societeOption"
+              *ngFor="let societeOption of societesSharedCollection; trackBy: trackSocieteById"
+            >
+              {{ societeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.produit.typeProduit" for="field_typeProduit">Type Produit</label>
+          <select class="form-control" id="field_typeProduit" data-cy="typeProduit" name="typeProduit" formControlName="typeProduit">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                typeProduitOption.id === editForm.get('typeProduit')!.value?.id ? editForm.get('typeProduit')!.value : typeProduitOption
+              "
+              *ngFor="let typeProduitOption of typeProduitsSharedCollection; trackBy: trackTypeProduitById"
+            >
+              {{ typeProduitOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

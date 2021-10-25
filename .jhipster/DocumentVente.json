@@ -1,0 +1,54 @@
+{
+  "name": "DocumentVente",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "dateSaisie",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "taxe",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "observation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "montantht",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "montantttc",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "detailsStock",
+      "otherEntityRelationshipName": "documentVente",
+      "relationshipName": "detailsStock"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "detailDocVte",
+      "otherEntityRelationshipName": "documentVente",
+      "relationshipName": "detailDocVte"
+    }
+  ],
+  "entityTableName": "document_vente",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["Jade"],
+  "changelogDate": "20211025160926"
+}

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Societe.
+    -->
+    <changeSet id="20211025160922-1" author="jhipster">
+        <createTable tableName="societe">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="raisonsoc" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="sigle" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="activitepp" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="adressgeo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="formjuri" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telephone" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="bp" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="registre_cce" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="pays" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ville" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="commune" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="actif" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="file_data" type="longblob">
+                <constraints nullable="false" />
+            </column>
+            <column name="file_data_content_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="url_logo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20211025160922-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/societe.csv"
+                  separator=";"
+                  tableName="societe"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="raisonsoc" type="string"/>
+            <column name="sigle" type="string"/>
+            <column name="activitepp" type="string"/>
+            <column name="adressgeo" type="string"/>
+            <column name="formjuri" type="string"/>
+            <column name="telephone" type="string"/>
+            <column name="bp" type="string"/>
+            <column name="registre_cce" type="string"/>
+            <column name="pays" type="string"/>
+            <column name="ville" type="string"/>
+            <column name="commune" type="string"/>
+            <column name="email" type="string"/>
+            <column name="actif" type="boolean"/>
+            <column name="file_data" type="blob"/>
+            <column name="file_data_content_type" type="string"/>
+            <column name="url_logo" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

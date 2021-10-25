@@ -1,0 +1,87 @@
+{
+  "name": "DetailsStock",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "fieldValidateRules": ["unique", "required"]
+    },
+    {
+      "fieldName": "stkQTEentrant",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "stkQTEinitial",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "stkQTEreel",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "idCommande",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "idVente",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "idSortie",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "dateSaisie",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "montunitaireOP",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "produit",
+      "otherEntityRelationshipName": "detailsStock",
+      "relationshipName": "produit"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "documentAchat",
+      "otherEntityRelationshipName": "detailsStock",
+      "relationshipName": "documentAchat"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "documentVente",
+      "otherEntityRelationshipName": "detailsStock",
+      "relationshipName": "documentVente"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "documentSortie",
+      "otherEntityRelationshipName": "detailsStock",
+      "relationshipName": "documentSortie"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "societe",
+      "otherEntityRelationshipName": "detailsStock",
+      "relationshipName": "societe"
+    }
+  ],
+  "entityTableName": "details_stock",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["Jade"],
+  "changelogDate": "20211025160930"
+}

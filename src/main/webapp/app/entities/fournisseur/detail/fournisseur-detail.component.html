@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="fournisseur">
+      <h2 data-cy="fournisseurDetailsHeading"><span jhiTranslate="jadeApp.fournisseur.detail.title">Fournisseur</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jadeApp.fournisseur.id">Id</span></dt>
+        <dd>
+          <span>{{ fournisseur.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.fournisseur.codeFournisseur">Code Fournisseur</span></dt>
+        <dd>
+          <span>{{ fournisseur.codeFournisseur }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.fournisseur.raisonFournisseur">Raison Fournisseur</span></dt>
+        <dd>
+          <span>{{ fournisseur.raisonFournisseur }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.fournisseur.adrfournisseur">Adrfournisseur</span></dt>
+        <dd>
+          <span>{{ fournisseur.adrfournisseur }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.fournisseur.paysFournisseur">Pays Fournisseur</span></dt>
+        <dd>
+          <span>{{ fournisseur.paysFournisseur }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.fournisseur.villeFournisseur">Ville Fournisseur</span></dt>
+        <dd>
+          <span>{{ fournisseur.villeFournisseur }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.fournisseur.mailFournisseur">Mail Fournisseur</span></dt>
+        <dd>
+          <span>{{ fournisseur.mailFournisseur }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.fournisseur.celFournisseur">Cel Fournisseur</span></dt>
+        <dd>
+          <span>{{ fournisseur.celFournisseur }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.fournisseur.telFournisseur">Tel Fournisseur</span></dt>
+        <dd>
+          <span>{{ fournisseur.telFournisseur }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.fournisseur.societe">Societe</span></dt>
+        <dd>
+          <div *ngIf="fournisseur.societe">
+            <a [routerLink]="['/societe', fournisseur.societe?.id, 'view']">{{ fournisseur.societe?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/fournisseur', fournisseur.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

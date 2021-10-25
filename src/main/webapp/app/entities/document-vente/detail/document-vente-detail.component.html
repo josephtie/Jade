@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="documentVente">
+      <h2 data-cy="documentVenteDetailsHeading"><span jhiTranslate="jadeApp.documentVente.detail.title">Document Vente</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jadeApp.documentVente.id">Id</span></dt>
+        <dd>
+          <span>{{ documentVente.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.documentVente.dateSaisie">Date Saisie</span></dt>
+        <dd>
+          <span>{{ documentVente.dateSaisie | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.documentVente.taxe">Taxe</span></dt>
+        <dd>
+          <span>{{ documentVente.taxe }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.documentVente.observation">Observation</span></dt>
+        <dd>
+          <span>{{ documentVente.observation }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.documentVente.montantht">Montantht</span></dt>
+        <dd>
+          <span>{{ documentVente.montantht }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.documentVente.montantttc">Montantttc</span></dt>
+        <dd>
+          <span>{{ documentVente.montantttc }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/document-vente', documentVente.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

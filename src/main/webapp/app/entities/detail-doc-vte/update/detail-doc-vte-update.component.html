@@ -1,0 +1,187 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-detail-doc-vte-heading"
+        data-cy="DetailDocVteCreateUpdateHeading"
+        jhiTranslate="jadeApp.detailDocVte.home.createOrEditLabel"
+      >
+        Create or edit a Detail Doc Vte
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailDocVte.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          <div *ngIf="editForm.get('id')!.invalid && (editForm.get('id')!.dirty || editForm.get('id')!.touched)">
+            <small class="form-text text-danger" [hidden]="!editForm.get('id')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailDocVte.prixUnit" for="field_prixUnit">Prix Unit</label>
+          <input type="number" class="form-control" name="prixUnit" id="field_prixUnit" data-cy="prixUnit" formControlName="prixUnit" />
+          <div *ngIf="editForm.get('prixUnit')!.invalid && (editForm.get('prixUnit')!.dirty || editForm.get('prixUnit')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('prixUnit')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('prixUnit')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailDocVte.prixunitnet" for="field_prixunitnet">Prixunitnet</label>
+          <input
+            type="number"
+            class="form-control"
+            name="prixunitnet"
+            id="field_prixunitnet"
+            data-cy="prixunitnet"
+            formControlName="prixunitnet"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailDocVte.montligne" for="field_montligne">Montligne</label>
+          <input type="number" class="form-control" name="montligne" id="field_montligne" data-cy="montligne" formControlName="montligne" />
+          <div *ngIf="editForm.get('montligne')!.invalid && (editForm.get('montligne')!.dirty || editForm.get('montligne')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('montligne')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('montligne')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailDocVte.qteUnit" for="field_qteUnit">Qte Unit</label>
+          <input type="number" class="form-control" name="qteUnit" id="field_qteUnit" data-cy="qteUnit" formControlName="qteUnit" />
+          <div *ngIf="editForm.get('qteUnit')!.invalid && (editForm.get('qteUnit')!.dirty || editForm.get('qteUnit')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('qteUnit')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('qteUnit')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailDocVte.remise" for="field_remise">Remise</label>
+          <input type="number" class="form-control" name="remise" id="field_remise" data-cy="remise" formControlName="remise" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailDocVte.quantitecolis" for="field_quantitecolis"
+            >Quantitecolis</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="quantitecolis"
+            id="field_quantitecolis"
+            data-cy="quantitecolis"
+            formControlName="quantitecolis"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailDocVte.designation" for="field_designation">Designation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="designation"
+            id="field_designation"
+            data-cy="designation"
+            formControlName="designation"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailDocVte.produit" for="field_produit">Produit</label>
+          <select class="form-control" id="field_produit" data-cy="produit" name="produit" formControlName="produit">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="produitOption.id === editForm.get('produit')!.value?.id ? editForm.get('produit')!.value : produitOption"
+              *ngFor="let produitOption of produitsSharedCollection; trackBy: trackProduitById"
+            >
+              {{ produitOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.detailDocVte.documentVente" for="field_documentVente"
+            >Document Vente</label
+          >
+          <select
+            class="form-control"
+            id="field_documentVente"
+            data-cy="documentVente"
+            name="documentVente"
+            formControlName="documentVente"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                documentVenteOption.id === editForm.get('documentVente')!.value?.id
+                  ? editForm.get('documentVente')!.value
+                  : documentVenteOption
+              "
+              *ngFor="let documentVenteOption of documentVentesSharedCollection; trackBy: trackDocumentVenteById"
+            >
+              {{ documentVenteOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

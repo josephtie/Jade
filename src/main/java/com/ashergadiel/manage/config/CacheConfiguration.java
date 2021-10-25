@@ -1,8 +1,8 @@
 package com.ashergadiel.manage.config;
 
-import com.github.benmanes.caffeine.jcache.configuration.CaffeineConfiguration;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
+import org.ehcache.config.builders.*;
+import org.ehcache.jsr107.Eh107Configuration;
 import org.hibernate.cache.jcache.ConfigSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.cache.JCacheManagerCustomizer;
@@ -24,13 +24,15 @@ public class CacheConfiguration {
     private final javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration;
 
     public CacheConfiguration(JHipsterProperties jHipsterProperties) {
-        JHipsterProperties.Cache.Caffeine caffeine = jHipsterProperties.getCache().getCaffeine();
+        JHipsterProperties.Cache.Ehcache ehcache = jHipsterProperties.getCache().getEhcache();
 
-        CaffeineConfiguration<Object, Object> caffeineConfiguration = new CaffeineConfiguration<>();
-        caffeineConfiguration.setMaximumSize(OptionalLong.of(caffeine.getMaxEntries()));
-        caffeineConfiguration.setExpireAfterWrite(OptionalLong.of(TimeUnit.SECONDS.toNanos(caffeine.getTimeToLiveSeconds())));
-        caffeineConfiguration.setStatisticsEnabled(true);
-        jcacheConfiguration = caffeineConfiguration;
+        jcacheConfiguration =
+            Eh107Configuration.fromEhcacheCacheConfiguration(
+                CacheConfigurationBuilder
+                    .newCacheConfigurationBuilder(Object.class, Object.class, ResourcePoolsBuilder.heap(ehcache.getMaxEntries()))
+                    .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofSeconds(ehcache.getTimeToLiveSeconds())))
+                    .build()
+            );
     }
 
     @Bean
@@ -46,7 +48,30 @@ public class CacheConfiguration {
             createCache(cm, com.ashergadiel.manage.domain.User.class.getName());
             createCache(cm, com.ashergadiel.manage.domain.Authority.class.getName());
             createCache(cm, com.ashergadiel.manage.domain.User.class.getName() + ".authorities");
-            // jhipster-needle-caffeine-add-entry
+            createCache(cm, com.ashergadiel.manage.domain.Societe.class.getName());
+            createCache(cm, com.ashergadiel.manage.domain.Societe.class.getName() + ".detailsStocks");
+            createCache(cm, com.ashergadiel.manage.domain.Societe.class.getName() + ".produits");
+            createCache(cm, com.ashergadiel.manage.domain.Societe.class.getName() + ".fournisseurs");
+            createCache(cm, com.ashergadiel.manage.domain.Societe.class.getName() + ".documentAchats");
+            createCache(cm, com.ashergadiel.manage.domain.TypeProduit.class.getName());
+            createCache(cm, com.ashergadiel.manage.domain.TypeProduit.class.getName() + ".produits");
+            createCache(cm, com.ashergadiel.manage.domain.Produit.class.getName());
+            createCache(cm, com.ashergadiel.manage.domain.Produit.class.getName() + ".detailDocAches");
+            createCache(cm, com.ashergadiel.manage.domain.Produit.class.getName() + ".detailsStocks");
+            createCache(cm, com.ashergadiel.manage.domain.Produit.class.getName() + ".detailDocVtes");
+            createCache(cm, com.ashergadiel.manage.domain.DocumentAchat.class.getName());
+            createCache(cm, com.ashergadiel.manage.domain.DocumentAchat.class.getName() + ".detailDocAches");
+            createCache(cm, com.ashergadiel.manage.domain.DocumentAchat.class.getName() + ".detailsStocks");
+            createCache(cm, com.ashergadiel.manage.domain.DocumentVente.class.getName());
+            createCache(cm, com.ashergadiel.manage.domain.DocumentVente.class.getName() + ".detailsStocks");
+            createCache(cm, com.ashergadiel.manage.domain.DocumentVente.class.getName() + ".detailDocVtes");
+            createCache(cm, com.ashergadiel.manage.domain.DocumentSortie.class.getName());
+            createCache(cm, com.ashergadiel.manage.domain.DocumentSortie.class.getName() + ".detailsStocks");
+            createCache(cm, com.ashergadiel.manage.domain.DetailDocAch.class.getName());
+            createCache(cm, com.ashergadiel.manage.domain.DetailDocVte.class.getName());
+            createCache(cm, com.ashergadiel.manage.domain.DetailsStock.class.getName());
+            createCache(cm, com.ashergadiel.manage.domain.Fournisseur.class.getName());
+            // jhipster-needle-ehcache-add-entry
         };
     }
 
