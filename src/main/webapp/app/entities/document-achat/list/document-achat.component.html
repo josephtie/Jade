@@ -1,0 +1,98 @@
+<div>
+  <h2 id="page-heading" data-cy="DocumentAchatHeading">
+    <span jhiTranslate="jadeApp.documentAchat.home.title">Document Achats</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jadeApp.documentAchat.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-document-achat"
+        [routerLink]="['/document-achat/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jadeApp.documentAchat.home.createLabel"> Create a new Document Achat </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="documentAchats?.length === 0">
+    <span jhiTranslate="jadeApp.documentAchat.home.notFound">No documentAchats found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="documentAchats && documentAchats.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="jadeApp.documentAchat.id">Id</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.documentAchat.dateSaisie">Date Saisie</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.documentAchat.taxe">Taxe</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.documentAchat.observation">Observation</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.documentAchat.montantht">Montantht</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.documentAchat.montantttc">Montantttc</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.documentAchat.fournisseur">Fournisseur</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.documentAchat.societe">Societe</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let documentAchat of documentAchats; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/document-achat', documentAchat.id, 'view']">{{ documentAchat.id }}</a>
+          </td>
+          <td>{{ documentAchat.dateSaisie | formatMediumDate }}</td>
+          <td>{{ documentAchat.taxe }}</td>
+          <td>{{ documentAchat.observation }}</td>
+          <td>{{ documentAchat.montantht }}</td>
+          <td>{{ documentAchat.montantttc }}</td>
+          <td>
+            <div *ngIf="documentAchat.fournisseur">
+              <a [routerLink]="['/fournisseur', documentAchat.fournisseur?.id, 'view']">{{ documentAchat.fournisseur?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="documentAchat.societe">
+              <a [routerLink]="['/societe', documentAchat.societe?.id, 'view']">{{ documentAchat.societe?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/document-achat', documentAchat.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/document-achat', documentAchat.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(documentAchat)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

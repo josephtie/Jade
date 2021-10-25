@@ -1,0 +1,36 @@
+{
+  "jadeApp": {
+    "detailsStock": {
+      "home": {
+        "title": "DetailsStocks",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Details Stock",
+        "createOrEditLabel": "Créer ou éditer un Details Stock",
+        "notFound": "Aucun Details Stock trouvé"
+      },
+      "created": "Un nouveau Details Stock a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Details Stock avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Details Stock avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Details Stock {{ id }} ?"
+      },
+      "detail": {
+        "title": "Details Stock"
+      },
+      "id": "Id",
+      "stkQTEentrant": "Stk QT Eentrant",
+      "stkQTEinitial": "Stk QT Einitial",
+      "stkQTEreel": "Stk QT Ereel",
+      "idCommande": "Id Commande",
+      "idVente": "Id Vente",
+      "idSortie": "Id Sortie",
+      "dateSaisie": "Date Saisie",
+      "montunitaireOP": "Montunitaire OP",
+      "produit": "Produit",
+      "documentAchat": "Document Achat",
+      "documentVente": "Document Vente",
+      "documentSortie": "Document Sortie",
+      "societe": "Societe"
+    }
+  }
+}

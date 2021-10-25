@@ -1,0 +1,71 @@
+{
+  "name": "DocumentAchat",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "dateSaisie",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "taxe",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "observation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "montantht",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "montantttc",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "fournisseur",
+      "otherEntityRelationshipName": "documentAchat",
+      "relationshipName": "fournisseur",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "societe",
+      "otherEntityRelationshipName": "documentAchat",
+      "relationshipName": "societe"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "detailDocAch",
+      "otherEntityRelationshipName": "documentAchat",
+      "relationshipName": "detailDocAch"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "detailsStock",
+      "otherEntityRelationshipName": "documentAchat",
+      "relationshipName": "detailsStock"
+    }
+  ],
+  "entityTableName": "document_achat",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["Jade"],
+  "changelogDate": "20211025163500"
+}

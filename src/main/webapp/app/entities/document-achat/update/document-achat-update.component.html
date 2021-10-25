@@ -1,0 +1,175 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-document-achat-heading"
+        data-cy="DocumentAchatCreateUpdateHeading"
+        jhiTranslate="jadeApp.documentAchat.home.createOrEditLabel"
+      >
+        Create or edit a Document Achat
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="jadeApp.documentAchat.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          <div *ngIf="editForm.get('id')!.invalid && (editForm.get('id')!.dirty || editForm.get('id')!.touched)">
+            <small class="form-text text-danger" [hidden]="!editForm.get('id')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.documentAchat.dateSaisie" for="field_dateSaisie">Date Saisie</label>
+          <div class="input-group">
+            <input
+              id="field_dateSaisie"
+              data-cy="dateSaisie"
+              type="text"
+              class="form-control"
+              name="dateSaisie"
+              ngbDatepicker
+              #dateSaisieDp="ngbDatepicker"
+              formControlName="dateSaisie"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateSaisieDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+          <div *ngIf="editForm.get('dateSaisie')!.invalid && (editForm.get('dateSaisie')!.dirty || editForm.get('dateSaisie')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dateSaisie')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.documentAchat.taxe" for="field_taxe">Taxe</label>
+          <input type="number" class="form-control" name="taxe" id="field_taxe" data-cy="taxe" formControlName="taxe" />
+          <div *ngIf="editForm.get('taxe')!.invalid && (editForm.get('taxe')!.dirty || editForm.get('taxe')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('taxe')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('taxe')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.documentAchat.observation" for="field_observation">Observation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="observation"
+            id="field_observation"
+            data-cy="observation"
+            formControlName="observation"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.documentAchat.montantht" for="field_montantht">Montantht</label>
+          <input type="number" class="form-control" name="montantht" id="field_montantht" data-cy="montantht" formControlName="montantht" />
+          <div *ngIf="editForm.get('montantht')!.invalid && (editForm.get('montantht')!.dirty || editForm.get('montantht')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('montantht')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('montantht')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.documentAchat.montantttc" for="field_montantttc">Montantttc</label>
+          <input
+            type="number"
+            class="form-control"
+            name="montantttc"
+            id="field_montantttc"
+            data-cy="montantttc"
+            formControlName="montantttc"
+          />
+          <div *ngIf="editForm.get('montantttc')!.invalid && (editForm.get('montantttc')!.dirty || editForm.get('montantttc')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('montantttc')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('montantttc')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.documentAchat.fournisseur" for="field_fournisseur">Fournisseur</label>
+          <select class="form-control" id="field_fournisseur" data-cy="fournisseur" name="fournisseur" formControlName="fournisseur">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                fournisseurOption.id === editForm.get('fournisseur')!.value?.id ? editForm.get('fournisseur')!.value : fournisseurOption
+              "
+              *ngFor="let fournisseurOption of fournisseursCollection; trackBy: trackFournisseurById"
+            >
+              {{ fournisseurOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jadeApp.documentAchat.societe" for="field_societe">Societe</label>
+          <select class="form-control" id="field_societe" data-cy="societe" name="societe" formControlName="societe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="societeOption.id === editForm.get('societe')!.value?.id ? editForm.get('societe')!.value : societeOption"
+              *ngFor="let societeOption of societesSharedCollection; trackBy: trackSocieteById"
+            >
+              {{ societeOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

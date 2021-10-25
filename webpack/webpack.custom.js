@@ -62,7 +62,7 @@ module.exports = async (config, options, targetOptions) => {
           port: 9000,
           https: tls,
           proxy: {
-            target: `http${tls ? 's' : ''}://localhost:${targetOptions.target === 'serve' ? '4200' : '8018'}`,
+            target: `http${tls ? 's' : ''}://localhost:${targetOptions.target === 'serve' ? '4200' : '8080'}`,
             proxyOptions: {
               changeOrigin: false, //pass the Host header to the backend unchanged  https://github.com/Browsersync/browser-sync/issues/430
             },
@@ -123,7 +123,6 @@ module.exports = async (config, options, targetOptions) => {
       output: {
         groupBy: [
           { pattern: './src/main/webapp/i18n/fr/*.json', fileName: './i18n/fr.json' },
-          { pattern: './src/main/webapp/i18n/en/*.json', fileName: './i18n/en.json' },
           // jhipster-needle-i18n-language-webpack - JHipster will add/remove languages in this array
         ],
       },

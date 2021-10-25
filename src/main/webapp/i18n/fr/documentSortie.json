@@ -1,0 +1,29 @@
+{
+  "jadeApp": {
+    "documentSortie": {
+      "home": {
+        "title": "DocumentSorties",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Document Sortie",
+        "createOrEditLabel": "Créer ou éditer un Document Sortie",
+        "notFound": "Aucun Document Sortie trouvé"
+      },
+      "created": "Un nouveau Document Sortie a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Document Sortie avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Document Sortie avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Document Sortie {{ id }} ?"
+      },
+      "detail": {
+        "title": "Document Sortie"
+      },
+      "id": "Id",
+      "dateSaisie": "Date Saisie",
+      "taxe": "Taxe",
+      "observation": "Observation",
+      "montantht": "Montantht",
+      "montantttc": "Montantttc",
+      "detailsStock": "Details Stock"
+    }
+  }
+}

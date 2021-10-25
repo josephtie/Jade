@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="documentAchat">
+      <h2 data-cy="documentAchatDetailsHeading"><span jhiTranslate="jadeApp.documentAchat.detail.title">Document Achat</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jadeApp.documentAchat.id">Id</span></dt>
+        <dd>
+          <span>{{ documentAchat.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.documentAchat.dateSaisie">Date Saisie</span></dt>
+        <dd>
+          <span>{{ documentAchat.dateSaisie | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.documentAchat.taxe">Taxe</span></dt>
+        <dd>
+          <span>{{ documentAchat.taxe }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.documentAchat.observation">Observation</span></dt>
+        <dd>
+          <span>{{ documentAchat.observation }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.documentAchat.montantht">Montantht</span></dt>
+        <dd>
+          <span>{{ documentAchat.montantht }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.documentAchat.montantttc">Montantttc</span></dt>
+        <dd>
+          <span>{{ documentAchat.montantttc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.documentAchat.fournisseur">Fournisseur</span></dt>
+        <dd>
+          <div *ngIf="documentAchat.fournisseur">
+            <a [routerLink]="['/fournisseur', documentAchat.fournisseur?.id, 'view']">{{ documentAchat.fournisseur?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.documentAchat.societe">Societe</span></dt>
+        <dd>
+          <div *ngIf="documentAchat.societe">
+            <a [routerLink]="['/societe', documentAchat.societe?.id, 'view']">{{ documentAchat.societe?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/document-achat', documentAchat.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

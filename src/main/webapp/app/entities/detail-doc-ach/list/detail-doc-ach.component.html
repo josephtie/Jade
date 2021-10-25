@@ -1,0 +1,102 @@
+<div>
+  <h2 id="page-heading" data-cy="DetailDocAchHeading">
+    <span jhiTranslate="jadeApp.detailDocAch.home.title">Detail Doc Aches</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jadeApp.detailDocAch.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-detail-doc-ach"
+        [routerLink]="['/detail-doc-ach/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jadeApp.detailDocAch.home.createLabel"> Create a new Detail Doc Ach </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="detailDocAches?.length === 0">
+    <span jhiTranslate="jadeApp.detailDocAch.home.notFound">No detailDocAches found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="detailDocAches && detailDocAches.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocAch.id">Id</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocAch.prixUnit">Prix Unit</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocAch.prixunitnet">Prixunitnet</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocAch.montligne">Montligne</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocAch.qteUnit">Qte Unit</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocAch.remise">Remise</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocAch.quantitecolis">Quantitecolis</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocAch.designation">Designation</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocAch.produit">Produit</span></th>
+          <th scope="col"><span jhiTranslate="jadeApp.detailDocAch.documentAchat">Document Achat</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detailDocAch of detailDocAches; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/detail-doc-ach', detailDocAch.id, 'view']">{{ detailDocAch.id }}</a>
+          </td>
+          <td>{{ detailDocAch.prixUnit }}</td>
+          <td>{{ detailDocAch.prixunitnet }}</td>
+          <td>{{ detailDocAch.montligne }}</td>
+          <td>{{ detailDocAch.qteUnit }}</td>
+          <td>{{ detailDocAch.remise }}</td>
+          <td>{{ detailDocAch.quantitecolis }}</td>
+          <td>{{ detailDocAch.designation }}</td>
+          <td>
+            <div *ngIf="detailDocAch.produit">
+              <a [routerLink]="['/produit', detailDocAch.produit?.id, 'view']">{{ detailDocAch.produit?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="detailDocAch.documentAchat">
+              <a [routerLink]="['/document-achat', detailDocAch.documentAchat?.id, 'view']">{{ detailDocAch.documentAchat?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/detail-doc-ach', detailDocAch.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/detail-doc-ach', detailDocAch.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(detailDocAch)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

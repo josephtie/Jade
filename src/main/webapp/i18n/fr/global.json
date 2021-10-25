@@ -7,6 +7,16 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
+        "societe": "Societe",
+        "typeProduit": "Type Produit",
+        "produit": "Produit",
+        "documentAchat": "Document Achat",
+        "documentVente": "Document Vente",
+        "documentSortie": "Document Sortie",
+        "detailDocAch": "Detail Doc Ach",
+        "detailDocVte": "Detail Doc Vte",
+        "detailsStock": "Details Stock",
+        "fournisseur": "Fournisseur",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

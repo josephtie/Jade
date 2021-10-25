@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="detailDocAch">
+      <h2 data-cy="detailDocAchDetailsHeading"><span jhiTranslate="jadeApp.detailDocAch.detail.title">Detail Doc Ach</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jadeApp.detailDocAch.id">Id</span></dt>
+        <dd>
+          <span>{{ detailDocAch.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocAch.prixUnit">Prix Unit</span></dt>
+        <dd>
+          <span>{{ detailDocAch.prixUnit }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocAch.prixunitnet">Prixunitnet</span></dt>
+        <dd>
+          <span>{{ detailDocAch.prixunitnet }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocAch.montligne">Montligne</span></dt>
+        <dd>
+          <span>{{ detailDocAch.montligne }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocAch.qteUnit">Qte Unit</span></dt>
+        <dd>
+          <span>{{ detailDocAch.qteUnit }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocAch.remise">Remise</span></dt>
+        <dd>
+          <span>{{ detailDocAch.remise }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocAch.quantitecolis">Quantitecolis</span></dt>
+        <dd>
+          <span>{{ detailDocAch.quantitecolis }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocAch.designation">Designation</span></dt>
+        <dd>
+          <span>{{ detailDocAch.designation }}</span>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocAch.produit">Produit</span></dt>
+        <dd>
+          <div *ngIf="detailDocAch.produit">
+            <a [routerLink]="['/produit', detailDocAch.produit?.id, 'view']">{{ detailDocAch.produit?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jadeApp.detailDocAch.documentAchat">Document Achat</span></dt>
+        <dd>
+          <div *ngIf="detailDocAch.documentAchat">
+            <a [routerLink]="['/document-achat', detailDocAch.documentAchat?.id, 'view']">{{ detailDocAch.documentAchat?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/detail-doc-ach', detailDocAch.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

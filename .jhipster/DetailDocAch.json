@@ -1,0 +1,65 @@
+{
+  "name": "DetailDocAch",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "prixUnit",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prixunitnet",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "montligne",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "qteUnit",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "remise",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "quantitecolis",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "designation",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "produit",
+      "otherEntityRelationshipName": "detailDocAch",
+      "relationshipName": "produit"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "documentAchat",
+      "otherEntityRelationshipName": "detailDocAch",
+      "relationshipName": "documentAchat"
+    }
+  ],
+  "entityTableName": "detail_doc_ach",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["Jade"],
+  "changelogDate": "20211025163503"
+}
